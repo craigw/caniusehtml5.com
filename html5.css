@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+/* http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css */
+html{color:#000;background:#fff}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit}del,ins{text-decoration:none}li{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}q:before,q:after{content:''}abbr,acronym{border:0;font-variant:normal}sup{vertical-align:baseline}sub{vertical-align:baseline}legend{color:#000}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit}input,button,textarea,select{*font-size:100%}
+
+/* Initial style stolen from http://edinburgh2.com/ and adapted to fit */
+body {
+	background: #fff;
+	color: #222;
+	font: 100%/1.5em "Helvetica Neue",Arial,Helvetica,sans-serif;
+	margin: 0 auto;
+	width: 48em;
+}
+
+a,
+a:link,
+a:visited {
+	color: #339;
+}
+a:active,
+a:hover {
+	color: #00f;
+}
+
+h1 {
+	color: #000;
+	font-size: 2em;
+	line-height: 1.5em;
+	padding: 1.5em 0;
+}
+h2 {
+  font-size: 1.25em;
+  line-height: 1.2em;
+}
+h2 {
+  font-size: 1.25em;
+  line-height: 1.2em;
+}
+h1 + p {
+	padding: 0 0 1.5em;
+}
+.html5 {
+	float: left;
+	text-align: center;
+	padding: 0 0 3em;
+	width: 100%;
+}
+.html5 div {
+  text-align: left;
+	border: 0.5em solid #eee;
+	float: left;
+	clear: none;
+  margin: 0 1em 1em 0;
+  padding: 0.5em;
+	width: 40%;
+}
+.html5 .supported {
+  border-color: #80b704;
+}
+.html5 .unsupported {
+  border-color: #670014;
+}
+.footer {
+	border-top: 1px solid #eee;
+	clear: both;
+	color: #ccc;
+	padding: 0.75em 0;
+}
+.footer a {
+	color: #ccc;
+}

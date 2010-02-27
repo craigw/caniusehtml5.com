@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
+  "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:event="http://purl.org/NET/c4dm/event.owl#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<head>
+
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <title>london2: what’s on</title>
+  <link charset="utf-8" href="html5.css" media="screen" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="modernizr-1.1.min.js"></script>
+  <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+  <script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function() {
+      var html5           = $('<div>').addClass('html5'),
+          supported       = $('<div>').addClass('supported'),
+          unsupported     = $('<div>').addClass('unsupported'),
+          supportedList   = $('<ol>').attr('id', 'supported'),
+          unsupportedList = $('<ol>').attr('id', 'unsupported');
+
+      supported.append($('<h2>').text('Supported')).append(supportedList);
+      unsupported.append($('<h2>').text('Unsupported')).append(unsupportedList);
+      html5.append(supported).append(unsupported);
+
+      for(var i in Modernizr) {
+        if(i.charAt(0) == '_') {
+          continue;
+        }
+
+        var title = $('<h3>').text(i);
+        var feature = $('<li>').attr('id', i).append(title);
+
+        if(Modernizr[i]) { 
+          supportedList.append(feature);
+        } else {
+          unsupportedList.append(feature);
+        }
+
+        $('.loading').replaceWith(html5);
+      }
+    });
+    // ]]>
+  </script>
+</head>
+<body>
+
+  <h1>Can I use HTML5?</h1>
+
+  <p class="loading">Checking what your browser supports...</p>
+
+  <p class="footer" about="http://caniusehtml5.com/#project"><a href="http://caniusehtml5.com/" property="dc:title" rel="dc:identifier">caniusehtml5.com</a> is maintained by <span rel="dc:creator"><a typeof="foaf:Person" about="http://barkingiguana.com/~craig/foaf.rdf#me" rel="foaf:homepage" property="foaf:name" href="http://barkingiguana.com/">Craig Webster</a></span>.</p>
+</body>
+</html>
