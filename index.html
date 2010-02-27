@@ -11,7 +11,36 @@
   <script type="text/javascript">
     //<![CDATA[
     $(document).ready(function() {
-      var html5           = $('<div>').addClass('html5'),
+      var features = {
+        'applicationcache' : { source: 'html5', title: 'Application Cache', link: 'http://www.w3.org/TR/offline-webapps/#offline' },
+        'audio'            : { source: 'html5', title: 'Audio', link: 'https://developer.mozilla.org/En/HTML/Element/Audio' },
+        'borderimage'      : { source: 'css3' },
+        'borderradius'     : { source: 'css3' },
+        'boxshadow'        : { source: 'css3' },
+        'canvastext'       : { source: 'css3' },
+        'cssanimations'    : { source: 'css3' },
+        'csscolumns'       : { source: 'css3' },
+        'cssgradients'     : { source: 'css3' },
+        'cssreflections'   : { source: 'css3' },
+        'csstransforms'    : { source: 'css3' },
+        'csstransforms3d'  : { source: 'css3' },
+        'csstransitions'   : { source: 'css3' },
+        'fontface'         : { source: 'css3' },
+        'geolocation'      : { source: 'html5', title: 'Geolocation', link: 'https://developer.mozilla.org/En/Using_geolocation' },
+        'hsla'             : { source: 'css3' },
+        'input'            : { source: 'css3' },
+        'inputtypes'       : { source: 'css3' },
+        'localstorage'     : { source: 'html5', title: 'Local Storage', link: 'https://developer.mozilla.org/en/DOM/Storage' },
+        'multiplebgs'      : { source: 'css3' },
+        'opacity'          : { source: 'css3' },
+        'rgba'             : { source: 'css3' },
+        'sessionstorage'   : { source: 'html5', title: 'Session Storage', link: 'https://developer.mozilla.org/en/Session_store_API' },
+        'video'            : { source: 'html5', title: 'Video', link: 'https://developer.mozilla.org/En/HTML/Element/Video' },
+        'webworkers'       : { source: 'html5', title: 'Web Workers', link: 'https://developer.mozilla.org/En/Using_web_workers' },
+        'canvas'           : { source: 'html5', title: 'Canvas', link: 'https://developer.mozilla.org/en/Canvas_tutorial' },
+      }
+
+      var html5           = $('<div>').addClass('html5features'),
           supported       = $('<div>').addClass('supported'),
           unsupported     = $('<div>').addClass('unsupported'),
           supportedList   = $('<ol>').attr('id', 'supported'),
@@ -22,12 +51,27 @@
       html5.append(supported).append(unsupported);
 
       for(var i in Modernizr) {
-        if(i.charAt(0) == '_') {
+        if(i.charAt(0) == '_' || i == "addTest") {
           continue;
         }
 
-        var title = $('<h3>').text(i);
-        var feature = $('<li>').attr('id', i).append(title);
+        var title = $('<h3>');
+        if(features[i] && features[i].title) {
+          title.text(features[i].title);
+        } else {
+          title.text(i);
+        }
+
+        var feature = $('<li>').attr('id', i).append(title).addClass('feature');
+        if(features[i] && features[i].source) {
+          feature.addClass(features[i].source);
+        } else {
+          feature.addClass('unknown');
+        }
+
+        if(features[i] && features[i].link) {
+          title.html($('<a>').attr('href', features[i].link).text(title.text()));
+        }
 
         if(Modernizr[i]) { 
           supportedList.append(feature);
