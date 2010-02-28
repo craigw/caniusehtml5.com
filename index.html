@@ -11,6 +11,10 @@
   <script type="text/javascript">
     //<![CDATA[
     $(document).ready(function() {
+      Modernizr.addTest('websockets', function() {
+        return typeof(window.WebSocket) == "function";
+      });
+
       var features = {
         'applicationcache' : { source: 'html5', title: 'Application Cache', link: 'http://www.w3.org/TR/offline-webapps/#offline' },
         'audio'            : { source: 'html5', title: 'Audio', link: 'https://developer.mozilla.org/En/HTML/Element/Audio' },
@@ -38,6 +42,7 @@
         'video'            : { source: 'html5', title: 'Video', link: 'https://developer.mozilla.org/En/HTML/Element/Video' },
         'webworkers'       : { source: 'html5', title: 'Web Workers', link: 'https://developer.mozilla.org/En/Using_web_workers' },
         'canvas'           : { source: 'html5', title: 'Canvas', link: 'https://developer.mozilla.org/en/Canvas_tutorial' },
+        'websockets'       : { source: 'html5', title: 'WebSockets', link: 'http://www.w3.org/TR/websockets/#the-websocket-interface' }
       }
 
       var html5           = $('<div>').addClass('html5features'),
